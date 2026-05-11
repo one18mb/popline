@@ -38,18 +38,20 @@ Full spec: [spec.md](spec.md).
 
 ## Performance
 
-Test data: `package.json` (17011 bytes) → PopLine `package.pln` (13074 bytes, **76.9%**)
+Test data: `package.json` (17011 B) → `package.pln` (13074 B, **76.9%**)
 
-| Platform | Serialize | vs JSON | Parse | vs JSON |
-|----------|-----------|---------|-------|---------|
-| **C** | 1742 ms | **0.65x** 🟢 | 3718 ms | **0.75x** 🟢 |
-| **Python** | 193 ms | **0.22x** 🟢 | 519 ms | **0.79x** 🟢 |
-| **Go** | 503 ms | **0.33x** 🟢 | 1232 ms | **0.69x** 🟢 |
-| **Java** | 703 ms | **0.41x** 🟢 | 1402 ms | **0.98x** 🟢 |
-| **Rust** | — | TBD | — | TBD |
-| **JS** | 2401 ms | 10.20x 🔴 | 3306 ms | 8.06x 🔴 |
+> Ratio < 1 means PopLine is faster. Iteration counts differ per language (C=50000, others=5000), absolute times are NOT comparable across languages. See each sub-project README for µs/op details.
 
-> 🔴 = Pure TypeScript, no native optimization. Reference only.
+| Platform | Serialize (vs JSON) | Parse (vs JSON) | Iterations |
+|----------|-------------------|----------------|------------|
+| **C** | **0.65x** 🟢 | **0.75x** 🟢 | 50000 |
+| **Python** | **0.22x** 🟢 | **0.79x** 🟢 | 5000 |
+| **Go** | **0.33x** 🟢 | **0.69x** 🟢 | 5000 |
+| **Java** | **0.41x** 🟢 | **0.98x** 🟢 | 5000 |
+| **Rust** | — | — | TBD |
+| **JS** | 10.20x 🔴 | 8.06x 🔴 | 5000 |
+
+> 🔴 = Pure TypeScript, reference only
 
 ## Ecosystem
 
