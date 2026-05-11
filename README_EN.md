@@ -38,20 +38,18 @@ Full spec: [spec.md](spec.md).
 
 ## Performance
 
-Test data: `package.json` (17011 B) → `package.pln` (13074 B, **76.9%**)
+Test data: `package.json` (17011 B) → `package.pln` (13074 B, **76.9%**), 5000 iterations for all tests.
 
-> Ratio < 1 means PopLine is faster. Iteration counts differ per language (C=50000, others=5000), absolute times are NOT comparable across languages. See each sub-project README for µs/op details.
+| Platform | Serialize (vs JSON) | Parse (vs JSON) |
+|----------|-------------------|----------------|
+| **C** | **0.68x** 🟢 | **0.74x** 🟢 |
+| **Python** | **0.23x** 🟢 | **0.91x** 🟢 |
+| **Go** | **0.37x** 🟢 | **0.68x** 🟢 |
+| **Java** | **0.42x** 🟢 | **0.96x** 🟢 |
+| **Rust** | **0.34x** 🟢 | 1.89x |
+| **JS** | 10.20x 🔴 | 8.06x 🔴 |
 
-| Platform | Serialize (vs JSON) | Parse (vs JSON) | Iterations |
-|----------|-------------------|----------------|------------|
-| **C** | **0.65x** 🟢 | **0.75x** 🟢 | 50000 |
-| **Python** | **0.22x** 🟢 | **0.79x** 🟢 | 5000 |
-| **Go** | **0.33x** 🟢 | **0.69x** 🟢 | 5000 |
-| **Java** | **0.41x** 🟢 | **0.98x** 🟢 | 5000 |
-| **Rust** | — | — | TBD |
-| **JS** | 10.20x 🔴 | 8.06x 🔴 | 5000 |
-
-> 🔴 = Pure TypeScript, reference only
+> Ratio < 1 means PopLine is faster. JS is pure TypeScript without native optimization.
 
 ## Ecosystem
 
