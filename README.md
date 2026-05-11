@@ -61,6 +61,7 @@ tags: [
 | [popline-go](https://github.com/one18mb/popline-go) | Go 实现 |
 | [popline-rust](https://github.com/one18mb/popline-rust) | Rust crate |
 | [popline-java](https://github.com/one18mb/popline-java) | Java 实现 |
+| [popline-cli](https://github.com/one18mb/popline-cli) | CLI 工具：`pln` 命令，JSON ↔ PopLine 互转 |
 | [popline-vscode](https://github.com/one18mb/popline-vscode) | VS Code 扩展（语法高亮） |
 | [popline-vim](https://github.com/one18mb/popline-vim) | Vim/Neovim 插件 |
 
