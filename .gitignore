@@ -1,11 +1,1 @@
-*.o
-*.so
-*.pyc
-__pycache__/
-build/
-venv/
-.cache/
-.claude/
 *.swp
-test
-popline.cpython-*-linux-gnu.so
