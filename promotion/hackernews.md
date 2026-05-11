@@ -27,9 +27,9 @@ Go  serialize:  1486 ms (JSON) → 552 ms (PopLine)   -63%
 Python serialize: 935 ms (JSON) → 213 ms (PopLine)  -77%
 ```
 
-**Faster for machines. Cleaner for humans. Same expressiveness.**
+**Faster for machines. Cleaner for grep. Smaller on the wire.**
 
-PopLine doesn't sacrifice one for the other — the same design choice (line-based structure) benefits both sides.
+One trade-off: PopLine's `N ` pop prefix is less visually obvious than JSON's `{}` brackets. But what you get in return — smaller files, faster parsing, grep-native retrieval, clean diffs — matters more in practice.
 
 ## The Design
 
@@ -155,16 +155,36 @@ All implementations follow the same spec and outperform their JSON counterparts:
 | **TypeScript** | `Pln.parse()` | `Pln.stringify()` | [popline-js](https://github.com/one18mb/popline-js) |
 | **CLI** | `pln convert` | `pln validate` | [popline-cli](https://github.com/one18mb/popline-cli) |
 
+## The Honest Trade-off
+
+**PopLine's weakness:** Nested structure is less visually scannable than JSON. The `N ` pop prefix requires a moment to parse, unlike JSON's `{}` which you see instantly.
+
+**What that weakness buys you:**
+
+| Metric | PopLine | vs JSON |
+|--------|---------|---------|
+| File size | 13074 B | **23% smaller** (more for deep nesting) |
+| C serialize | 186 ms | **32% faster** |
+| Go serialize | 552 ms | **63% faster** |
+| Python serialize | 213 ms | **77% faster** |
+| grep search | `grep port:` | No jq needed |
+| diff accuracy | one-line change | No diff pollution |
+| streaming | blank-line delimited | Native multi-message |
+
+JSON can do everything PopLine can do. But PopLine does the **high-frequency stuff** — storage, transfer, retrieval, parsing, diffing — significantly better across the board.
+
+**The bet:** Visual hierarchy readability matters less than file size, performance, and searchability in real-world usage.
+
 ## Use Cases
 
 | Use Case | Why PopLine Wins |
 |----------|-----------------|
-| **Config files** | Flat/shallow, grepable, clean diffs |
+| **Data exchange / API** | 23% smaller payload, faster serialization |
+| **Config files** | grepable, clean diffs |
 | **Structured logging** | `grep level=error` without jq, streaming native |
-| **Data pipelines** | Line-based, pipe-friendly, `awk`/`sed` work directly |
-| **API responses** | 23% smaller payload, fast serialization |
+| **Deeply nested data** | More nesting = more savings (no bracket overhead) |
+| **Data pipelines** | Line-based, pipe-friendly |
 | **Git-stored configs** | Accurate diffs, meaningful blame |
-| **CLI output** | Human-readable, greppable, pipeable |
 
 ## Quick Start
 
@@ -194,8 +214,8 @@ Full language specification in [spec.md](https://github.com/one18mb/popline/blob
 
 ---
 
-**PopLine is not a JSON replacement — it's a JSON alternative for the scenarios where JSON is suboptimal.**
+**PopLine trades one thing (visual nesting) for everything else (size, speed, grepability, diffability).**
 
-JSON is great for deep nesting and established ecosystems. PopLine is better for the daily 90%: configs, logs, diffs, pipelines, API payloads — where its line-based syntax gives **both humans and machines** a better experience.
+JSON can do everything PopLine does. PopLine just does the high-frequency stuff better.
 
 [https://github.com/one18mb/popline](https://github.com/one18mb/popline)

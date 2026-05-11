@@ -106,20 +106,25 @@ pln validate schema.pln                  # 校验
 
 下载：[github.com/one18mb/popline-cli/releases](https://github.com/one18mb/popline-cli/releases)
 
-## 适合什么场景
+## 坦诚说一个弱点和它换来的东西
 
-| 场景 | 适合 | 原因 |
-|------|------|------|
-| 配置文件 | ✅ | 扁平，grep 直达，diff 精确 |
-| 结构化日志 | ✅ | 空行分隔，逐行解析，grep 友好 |
-| pipeline 中间数据 | ✅ | 一行一条，管道原语畅通 |
-| 代码仓库配置 | ✅ | diff 好看，review 轻松 |
-| 复杂嵌套数据 | 需要插件 | 编辑器折叠辅助（VS Code / Vim 插件已就绪） |
-| 机器间通信 | JSON 继续用 | 生态在那，PopLine 做补充 |
+**PopLine 的弱点：** 嵌套结构没有 JSON 直观。`N ` 前缀要理解一下才知层级，不像 `{}` 一眼看出。
+
+**PopLine 换来的：**
+
+| 维度 | PopLine | 对比 JSON |
+|------|---------|-----------|
+| 体积 | 13074 B | **小 23%**，越深层嵌套省越多 |
+| C 序列化 | 186 ms | **快 32%** |
+| Python 序列化 | 213 ms | **快 77%** |
+| Go 序列化 | 552 ms | **快 63%** |
+| grep 检索 | `grep port:` | 直出结果，不需要 jq |
+| diff | 改一行显一行 | PR review 不污染 |
+| 流式 | 空行分隔 | 天然支持多消息 |
 
 ## 一句话
 
-**JSON 给机器，PopLine 给人。**
+**PopLine 用层级直观性，换了存储/传输/检索/性能的全维度提升。这比它更好的交易。**
 
 ---
 
