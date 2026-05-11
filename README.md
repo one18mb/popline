@@ -20,8 +20,6 @@ active: true
 tags: [
 "serialization"
 "line-based"
-1 description: "A line-based
-serialization format."
 ```
 
 ## 语法要点
