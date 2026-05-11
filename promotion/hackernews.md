@@ -1,22 +1,35 @@
-# PopLine: A line-oriented JSON alternative optimized for human reading
+# PopLine: JSON is fine. But "fine" doesn't mean optimal for how you actually use it.
 
-## The Problem
+## The Problem with "Fine"
 
-JSON is designed for machines. Every `{`, `}`, `"`, `,` — these are for parsers, not for the human eye.
+JSON was designed in 2001 for one job: easy JavaScript parsing. It succeeded. It's ubiquitous.
 
-When you read a config file, review a PR diff, or grep through logs, what you really want is:
+But ubiquitous doesn't mean optimal. Look at how structured data is actually used:
+
+| Use Case | Frequency | JSON's Performance |
+|----------|-----------|-------------------|
+| Config files | **Daily** | ⚠️ Diff pollution, grep friction |
+| Structured logs | **Daily** | ⚠️ Line noise, `jq` required |
+| Data exchange | **Constant** | ✅ Works well |
+| API responses | **Constant** | ⚠️ 23% syntax overhead |
+| Deeply nested data | **Occasional** | ✅ Bracket pairing helps |
+
+The problem is clear: **JSON optimizes for occasional scenarios (deep nesting) at the cost of daily scenarios (config, logs, diffs).**
+
+And it's not just about human ergonomics. The extra syntax has a real machine cost:
 
 ```
-port: 8080
+17011 B  package.json
+13074 B  PopLine equivalent           (-23% fewer bytes on the wire)
+
+C  serialize:    275 ms (JSON) → 186 ms (PopLine)   -32%
+Go  serialize:  1486 ms (JSON) → 552 ms (PopLine)   -63%
+Python serialize: 935 ms (JSON) → 213 ms (PopLine)  -77%
 ```
 
-Not:
+**Faster for machines. Cleaner for humans. Same expressiveness.**
 
-```
-"port": 8080,
-```
-
-That extra noise adds up. Over 17011 bytes of `package.json`, **3923 bytes are syntax noise** — quote marks, commas, closing brackets. That's **23% of the file**. PopLine drops it.
+PopLine doesn't sacrifice one for the other — the same design choice (line-based structure) benefits both sides.
 
 ## The Design
 
@@ -181,8 +194,8 @@ Full language specification in [spec.md](https://github.com/one18mb/popline/blob
 
 ---
 
-**PopLine is not a JSON killer.** JSON excels at deep nesting and machine-to-machine communication.
+**PopLine is not a JSON replacement — it's a JSON alternative for the scenarios where JSON is suboptimal.**
 
-**PopLine is for the 90% of JSON that humans read.** Config files, logs, diffs, pipeline data — the stuff you interact with daily.
+JSON is great for deep nesting and established ecosystems. PopLine is better for the daily 90%: configs, logs, diffs, pipelines, API payloads — where its line-based syntax gives **both humans and machines** a better experience.
 
 [https://github.com/one18mb/popline](https://github.com/one18mb/popline)
