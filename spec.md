@@ -58,7 +58,7 @@ version: 2
 active: true
 ```
 
-键名采用**黑名单**校验——禁止包含以下字符：`:`, `"`, `{`, `}`, `[`, `]`, `#`, 空格, `\t`, `\n`, `\r`。支持 Unicode 字符（中文、数字、连字符、点号等）。
+键名采用**黑名单**校验——禁止包含以下字符：`:`, `"`, `{`, `[`, `#`, 空格, `\t`, `\n`, `\r`。支持 Unicode 字符（中文、数字、连字符、点号等）。
 
 键名两侧无引号——PopLine 键名始终是裸字符串。
 
@@ -239,7 +239,7 @@ eol-continue   = '\n' string-body '\n' ... closing-'"'
 number         = "-"? digit+ ("." digit+)? (("e"|"E") "-"? digit+)?
 key            = key-char+
 key-char       = Unicode - forbidden
-forbidden      = ':' | '"' | '{' | '}' | '[' | ']' | '#' | ' ' | '\t' | '\n' | '\r'
+forbidden      = ':' | '"' | '{' | '[' | '#' | ' ' | '\t' | '\n' | '\r'
 empty-line     = ""
 ```
 
