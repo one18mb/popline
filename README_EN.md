@@ -38,12 +38,12 @@ Full spec: [spec.md](spec.md).
 
 ## Performance
 
-Test data: `package.json` (17011 B) → `package.pln` (13076 B, **76.9%**), 5000 iterations.
+Test data: `test-package.json` (17011 B) → `test-package.pln` (13076 B, **76.9%**), 5000 iterations.
 
 | Platform | Serialize (vs JSON) | Parse (vs JSON) |
 |----------|-------------------|----------------|
-| **C** | **0.63x** 🟢 | **0.73x** 🟢 |
-| **Python** | **0.22x** 🟢 | **0.86x** 🟢 |
+| **C** | **0.59x** 🟢 | **0.85x** 🟢 |
+| **Python** | **0.25x** 🟢 | **0.89x** 🟢 |
 | **Go** | **0.37x** 🟢 | **0.68x** 🟢 |
 | **Java** | **0.42x** 🟢 | **0.96x** 🟢 |
 | **Rust** | **0.34x** 🟢 | 1.89x |

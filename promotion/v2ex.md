@@ -2,7 +2,7 @@
 
 ## 先看几组数
 
-JSON 的 `package.json`（17011 字节），去掉键名引号、逗号、闭合括号后是 13074 字节——**23% 的字节是语法噪声**。
+JSON 的 `test-package.json`（17011 字节），去掉键名引号、逗号、闭合括号后是 13074 字节——**23% 的字节是语法噪声**。
 
 这不是"为了可读性牺牲效率"——解析也更快：
 
@@ -100,7 +100,7 @@ cat config.json | grep port
 
 ```bash
 # 零依赖单二进制
-pln convert package.json package.pln   # 23% smaller
+pln convert test-package.json test-package.pln   # 23% smaller
 pln validate schema.pln                  # 校验
 ```
 
