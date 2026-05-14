@@ -19,7 +19,7 @@ The problem is clear: **JSON optimizes for occasional scenarios (deep nesting) a
 And it's not just about human ergonomics. The extra syntax has a real machine cost:
 
 ```
-17011 B  test-package.json
+17011 B  test.json
 13074 B  PopLine equivalent           (-23% fewer bytes on the wire)
 
 C  serialize:    275 ms (JSON) → 186 ms (PopLine)   -32%
@@ -67,7 +67,7 @@ How it works:
 
 ## The Results
 
-**Benchmarks** (5000 iterations, 17011 B `test-package.json` → 13074 B `.pln`, all tests at same iteration count):
+**Benchmarks** (5000 iterations, 17011 B `test.json` → 13074 B `.pln`, all tests at same iteration count):
 
 | Language | JSON Lib | PopLine | Ratio |
 |----------|----------|---------|-------|
@@ -85,8 +85,8 @@ How it works:
 **File size**:
 
 ```
-17011 B  test-package.json
-13074 B  test-package.pln   76.9% (-23%)
+17011 B  test.json
+13074 B  test.pln   76.9% (-23%)
 ```
 
 ## Killer Features
@@ -190,7 +190,7 @@ JSON can do everything PopLine can do. But PopLine does the **high-frequency stu
 
 ```bash
 # CLI (zero dependencies, 51 KB binary)
-pln convert test-package.json test-package.pln
+pln convert test.json test.pln
 pln validate schema.pln
 
 # Python
