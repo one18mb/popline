@@ -222,7 +222,7 @@ eol-continue   = '\n' string-body '\n' ... closing-'"'
 number         = "-"? digit+ ("." digit+)? (("e"|"E") "-"? digit+)?
 key            = key-char+
 key-char       = Unicode - forbidden
-forbidden      = ':' | '"' | '{' | '[' | '#' | ' ' | '\t' | '\n' | '\r'
+forbidden      = ':' | '"' | '{' | '[' | ' ' | '\t' | '\n' | '\r'
 empty-line     = ""
 ```
 

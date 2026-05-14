@@ -28,7 +28,7 @@ tags: [
 |---------|------|
 | **Containers** | `{` = object, `[` = array, each on its own line. Root accepts any type. |
 | **Pop suffix** | Trailing ` N` closes N containers. Must attach to value content. EOF auto-closes. |
-| **Objects** | `key: value` (colon + space). Forbidden in keys: `:"{}[]#` space tab newline. |
+| **Objects** | `key: value` (colon + space). Forbidden in keys: `:"{}[]` space tab newline. |
 | **Arrays** | Elements have no prefix. |
 | **Strings** | Double-quoted. `""` escapes to literal `"`. Supports multi-line; closing quote can have ` N` pop suffix. |
 | **Scalars** | `true`/`false`/`null`/numbers (`.` or `e` → float). Bare strings error. |
