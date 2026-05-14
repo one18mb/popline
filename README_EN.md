@@ -26,11 +26,11 @@ tags: [
 
 | Feature | Rule |
 |---------|------|
-| **Containers** | `{` = object, `[` = array, each on its own line. Root must be `{` or `[`. |
-| **Pop** | `N ` prefix closes N containers. Must merge with content. EOF auto-closes. |
+| **Containers** | `{` = object, `[` = array, each on its own line. Root accepts any type. |
+| **Pop suffix** | Trailing ` N` closes N containers. Must attach to value content. EOF auto-closes. |
 | **Objects** | `key: value` (colon + space). Forbidden in keys: `:"{}[]#` space tab newline. |
 | **Arrays** | Elements have no prefix. |
-| **Strings** | Double-quoted. `""` escapes to literal `"`. Supports multi-line. |
+| **Strings** | Double-quoted. `""` escapes to literal `"`. Supports multi-line; closing quote can have ` N` pop suffix. |
 | **Scalars** | `true`/`false`/`null`/numbers (`.` or `e` → float). Bare strings error. |
 | **Streaming** | Empty lines separate multiple messages. |
 
@@ -38,16 +38,16 @@ Full spec: [spec.md](spec.md).
 
 ## Performance
 
-Test data: `package.json` (17011 B) → `package.pln` (13074 B, **76.9%**), 5000 iterations for all tests.
+Test data: `package.json` (17011 B) → `package.pln` (13076 B, **76.9%**), 5000 iterations.
 
 | Platform | Serialize (vs JSON) | Parse (vs JSON) |
 |----------|-------------------|----------------|
-| **C** | **0.68x** 🟢 | **0.74x** 🟢 |
-| **Python** | **0.23x** 🟢 | **0.91x** 🟢 |
+| **C** | **0.63x** 🟢 | **0.73x** 🟢 |
+| **Python** | **0.22x** 🟢 | **0.86x** 🟢 |
 | **Go** | **0.37x** 🟢 | **0.68x** 🟢 |
 | **Java** | **0.42x** 🟢 | **0.96x** 🟢 |
 | **Rust** | **0.34x** 🟢 | 1.89x |
-| **JS** | 10.20x 🔴 | 8.06x 🔴 |
+| **JS** | 4.40x 🔴 | 5.60x 🔴 |
 
 > Ratio < 1 means PopLine is faster. JS is pure TypeScript without native optimization.
 
@@ -55,12 +55,13 @@ Test data: `package.json` (17011 B) → `package.pln` (13074 B, **76.9%**), 5000
 
 | Project | Description |
 |---------|-------------|
-| [popline-c](https://github.com/one18mb/popline-c) | C reference implementation |
-| [popline-py](https://github.com/one18mb/popline-py) | Python C extension |
+| [popline-c](https://github.com/one18mb/popline-c) | C reference (parser, generator, SAX interface, format converters) |
+| [popline-py](https://github.com/one18mb/popline-py) | Python C extension (SAX parse + generator serialize, no DOM) |
 | [popline-js](https://github.com/one18mb/popline-js) | JavaScript/TypeScript |
 | [popline-go](https://github.com/one18mb/popline-go) | Go implementation |
 | [popline-rust](https://github.com/one18mb/popline-rust) | Rust crate |
 | [popline-java](https://github.com/one18mb/popline-java) | Java implementation |
+| [popline-cli](https://github.com/one18mb/popline-cli) | CLI multi-format converter (SAX zero-DOM + PopLine DOM) |
 | [popline-vscode](https://github.com/one18mb/popline-vscode) | VS Code extension |
 | [popline-vim](https://github.com/one18mb/popline-vim) | Vim/Neovim plugin |
 

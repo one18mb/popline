@@ -6,7 +6,7 @@ PopLine 生态系统的中心仓库。包含语言规范和各平台实现的索
 
 | 文件 | 说明 |
 |------|------|
-| `spec.md` | PopLine v0.3.0 形式化语言规范（含 EBNF 语法） |
+| `spec.md` | PopLine v0.4.0 形式化语言规范（含 EBNF 语法） |
 | `README.md` | 生态总览 |
 | `promotion/` | 推广文案 |
 
