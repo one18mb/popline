@@ -62,6 +62,7 @@ tags: [
 | [popline-rust](https://github.com/one18mb/popline-rust) | Rust crate |
 | [popline-java](https://github.com/one18mb/popline-java) | Java 实现 |
 | [popline-cli](https://github.com/one18mb/popline-cli) | CLI 工具：多格式互转（SAX 零 DOM + PopLine DOM） |
+| [popline-converter](https://github.com/one18mb/popline-converter) | [在线体验](https://one18mb.github.io/popline-converter/) — PopLine ↔ JSON/YAML/TOML/INI/XML 互转 |
 | [popline-vscode](https://github.com/one18mb/popline-vscode) | VS Code 扩展（语法高亮） |
 | [popline-vim](https://github.com/one18mb/popline-vim) | Vim/Neovim 插件 |
 
