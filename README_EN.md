@@ -62,6 +62,7 @@ Test data: `test.json` (17011 B) → `test.pln` (13076 B, **76.9%**), 5000 itera
 | [popline-rust](https://github.com/one18mb/popline-rust) | Rust crate |
 | [popline-java](https://github.com/one18mb/popline-java) | Java implementation |
 | [popline-cli](https://github.com/one18mb/popline-cli) | CLI multi-format converter (SAX zero-DOM + PopLine DOM) |
+| [popline-converter](https://github.com/one18mb/popline-converter) | [Try online](https://one18mb.github.io/popline-converter/) — PopLine ↔ JSON/YAML/TOML/INI/XML |
 | [popline-vscode](https://github.com/one18mb/popline-vscode) | VS Code extension |
 | [popline-vim](https://github.com/one18mb/popline-vim) | Vim/Neovim plugin |
 
